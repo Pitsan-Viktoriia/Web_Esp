@@ -1,0 +1,18 @@
+__pycache__
+
+# environment
+.venv
+.env
+
+*.pyc
+
+# log
+*.log
+
+*.bak
+
+# database files
+*.db
+*.database
+*.sqlite
+*.sqlite3
