@@ -1,8 +1,18 @@
+<!DOCTYPE html>
 <html>
     <head>
-
+        <link rel="stylesheet" href="/static/main/css/register.css" type="text/css">
     </head>
     <body>
-        Register
+        <form method="POST">
+            <h2>Sign up</h2>
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+            <label for="password1">Password:</label>
+            <input type="password" name="password1" id="password1" required>
+            <label for="password2">Password again:</label>
+            <input type="password" name="password2" id="password2" required>
+            <input type="submit" value="Submit">
+        </form>
     </body>
 </html>
