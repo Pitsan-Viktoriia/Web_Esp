@@ -22,3 +22,11 @@ class RegisterView(View):
             return HttpResponse('User has been successfully created!')
         except IntegrityError:      # this exception occurs when we try to create_user with username that already exists
             return HttpResponse('User with this username already exists!')
+        
+
+class LoginView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'login.html'))
+        with open(template_path, 'r') as f:
+            return HttpResponse(f.read())
