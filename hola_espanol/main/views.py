@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.views import View
 from django.db.utils import IntegrityError
+from django.contrib.auth import authenticate, login
 
 from .models import CustomUser
 
@@ -30,3 +31,13 @@ class LoginView(View):
         template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'login.html'))
         with open(template_path, 'r') as f:
             return HttpResponse(f.read())
+        
+    def post(self, request):
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if (user is not None):
+            login(request=request, user=user)
+            return HttpResponse("Successfully logged in!")
+        else:
+            return HttpResponse("Wrong credentials!")
