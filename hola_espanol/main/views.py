@@ -38,6 +38,14 @@ class LoginView(View):
         user = authenticate(request, username=username, password=password)
         if (user is not None):
             login(request=request, user=user)
-            return HttpResponse("Successfully logged in!")
+            return HttpResponse('Successfully logged in!')
         else:
-            return HttpResponse("Wrong credentials!")
+            return HttpResponse('Wrong credentials!')
+        
+
+class HomePageView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'index.html'))
+        with open(template_path, 'r') as f:
+            return HttpResponse(f.read())
