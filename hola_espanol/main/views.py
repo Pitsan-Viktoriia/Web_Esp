@@ -1,7 +1,7 @@
 import os
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate, login
@@ -49,3 +49,18 @@ class HomePageView(View):
         template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'index.html'))
         with open(template_path, 'r') as f:
             return HttpResponse(f.read())
+        
+
+class ProfileView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'profile.html'))
+        with open(template_path, 'r') as f:
+            return HttpResponse(f.read())
+
+
+class UserInfoView(View):
+
+    def get(self, request):
+        return JsonResponse({'username': f'{request.user.username}'})
+    
