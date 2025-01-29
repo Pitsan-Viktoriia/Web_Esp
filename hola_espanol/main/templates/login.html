@@ -2,15 +2,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="/static/main/css/register.css" type="text/css">
+        <link rel="stylesheet" href="/static/main/css/navbar.css" type="text/css">
     </head>
     <body>
-        <form method="POST">
-            <h2>Sign in</h2>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" required>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password" required>
-            <input type="submit" value="Submit">
-        </form>
+        <header>
+            <h1 class="logo">HolaEspa&ntilde;ol &#127891;</h1>
+            <nav class="navbar">
+                <ul class="nav__links">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/accounts/register/">Sign up</a></li>
+                    <li><a href="/accounts/login/">Sign in</a></li>
+                    <li><a href="/accounts/profile">Profile</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main_class">
+            <form method="POST">
+                <h2>Sign in</h2>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" required>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" required>
+                <input type="submit" value="Submit">
+            </form>
+        </main>
     </body>
 </html>
