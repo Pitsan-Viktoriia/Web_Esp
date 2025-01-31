@@ -7,6 +7,7 @@ from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate, login
 
 from .models import CustomUser
+from .utils import get_html_message
 
 class RegisterView(View):
 
@@ -17,12 +18,12 @@ class RegisterView(View):
 
     def post(self, request):
         if (request.POST.get('password1') != request.POST.get('password2')):
-            return HttpResponse('Passwords do not match!')
+            return HttpResponse(get_html_message('Passwords do not match!'))
         try:
             CustomUser.objects.create_user(username=request.POST.get('username'), password=request.POST.get('password1'))
-            return HttpResponse('User has been successfully created!')
+            return HttpResponse(get_html_message('User has been successfully created!'))
         except IntegrityError:      # this exception occurs when we try to create_user with username that already exists
-            return HttpResponse('User with this username already exists!')
+            return HttpResponse(get_html_message('User with this username already exists!'))
         
 
 class LoginView(View):
@@ -38,9 +39,9 @@ class LoginView(View):
         user = authenticate(request, username=username, password=password)
         if (user is not None):
             login(request=request, user=user)
-            return HttpResponse('Successfully logged in!')
+            return HttpResponse(get_html_message('Successfully logged in!'))
         else:
-            return HttpResponse('Wrong credentials!')
+            return HttpResponse(get_html_message('Wrong credentials!'))
         
 
 class HomePageView(View):
