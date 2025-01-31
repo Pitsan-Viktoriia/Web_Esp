@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from django.views import View
 from django.db.utils import IntegrityError
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 from .models import CustomUser
 from .utils import get_html_message
@@ -42,6 +42,13 @@ class LoginView(View):
             return HttpResponse(get_html_message('Successfully logged in!'))
         else:
             return HttpResponse(get_html_message('Wrong credentials!'))
+        
+
+class LogoutView(View):
+
+    def get(self, request):
+        logout(request=request)
+        return HttpResponse(get_html_message('Successfully logged out!'))
         
 
 class HomePageView(View):
