@@ -4,6 +4,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
         <link rel="stylesheet" href="/static/main/css/index.css" type="text/css">
         <link rel="stylesheet" href="/static/main/css/navbar.css" type="text/css">
+        <link rel="stylesheet" href="/static/main/css/profile.css" type="text/css">
         <script src="/static/main/js/profile.js"></script>
     </head>
     <body>
@@ -19,7 +20,15 @@
             </nav>
         </header>
         <main class="main_class" id="main_class">
-            <h1>Hello, <div id="profile_username">username</div>!</h1>
+            <h1 id="profile_header">Hello, username!</h1>
+            <ul class="profile_list">
+                <li><h2 id="profile_username">Username: username</h2></li>
+                <li><h2 id="profile_date">Date of Registration: dd-mm-yyyy</h2></li>
+                <li><h2 id="profile_about">About: something about student</h2></li>
+            </ul>
+            <div class="logout_button_container">
+                <a href="/accounts/logout/" class="logout_button">Logout</a>
+            </div>
         </main>
     </body>
 </html>
