@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+        <link rel="stylesheet" href="/static/main/css/index.css" type="text/css">
+        <link rel="stylesheet" href="/static/main/css/navbar.css" type="text/css">
+        <link rel="stylesheet" href="/static/main/css/profile.css" type="text/css">
+        <script src="/static/main/js/profile_ua.js"></script>
+        <script src="/static/main/js/navbar.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="logo">HolaEspa&ntilde;ol &#127891;</h1>
+            <nav class="navbar" id="navbar">
+                <ul class="nav__links">
+                    <li><a href="/home" id="nav__home">Головна</a></li>
+                    <li><a href="/accounts/register/" id="nav__register">Зареєструватися</a></li>
+                    <li><a href="/accounts/login/" id="nav__login">Увійти</a></li>
+                    <li><a href="/accounts/profile" id="nav__profile">Профіль</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main_class" id="main_class">
+            <h1 id="profile_header">Hola, username!</h1>
+            <ul class="profile_list">
+                <li><h2 id="profile_username">Юзернейм: username</h2></li>
+                <li><h2 id="profile_date">Дата реєстрації: dd-mm-yyyy</h2></li>
+                <li><h2 id="profile_about">Про мене: something about student</h2></li>
+            </ul>
+            <div class="logout_button_container">
+                <a href="/accounts/logout/" class="logout_button">Logout</a>
+            </div>
+        </main>
+    </body>
+</html>

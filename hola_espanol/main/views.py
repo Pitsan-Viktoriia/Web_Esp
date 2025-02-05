@@ -12,8 +12,8 @@ from .utils import get_html_message
 class RegisterView(View):
 
     def get(self, request):
-        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'register.html'))    # this expression gets absolute path to register.html file
-        with open(template_path, 'r') as f:
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'register_ua.html'))    # this expression gets absolute path to register.html file
+        with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
 
     def post(self, request):
@@ -29,8 +29,8 @@ class RegisterView(View):
 class LoginView(View):
 
     def get(self, request):
-        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'login.html'))
-        with open(template_path, 'r') as f:
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'login_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
         
     def post(self, request):
@@ -54,16 +54,16 @@ class LogoutView(View):
 class HomePageView(View):
 
     def get(self, request):
-        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'index.html'))
-        with open(template_path, 'r') as f:
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'index_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
         
 
 class ProfileView(View):
 
     def get(self, request):
-        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'profile.html'))
-        with open(template_path, 'r') as f:
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'profile_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
 
 

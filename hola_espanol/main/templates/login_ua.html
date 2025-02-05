@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="/static/main/css/register.css" type="text/css">
+        <link rel="stylesheet" href="/static/main/css/navbar.css" type="text/css">
+        <script src="/static/main/js/navbar.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1 class="logo">HolaEspa&ntilde;ol &#127891;</h1>
+            <nav class="navbar" id="navbar">
+                <ul class="nav__links">
+                    <li><a href="/home" id="nav__home">Головна</a></li>
+                    <li><a href="/accounts/register/" id="nav__register">Зареєструватися</a></li>
+                    <li><a href="/accounts/login/" id="nav__login">Увійти</a></li>
+                    <li><a href="/accounts/profile" id="nav__profile">Профіль</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="main_class">
+            <form method="POST">
+                <h2>Увійти</h2>
+                <label for="username">Юзернейм:</label>
+                <input type="text" name="username" id="username" required>
+                <label for="password">Пароль:</label>
+                <input type="password" name="password" id="password" required>
+                <input type="submit" value="Submit">
+            </form>
+        </main>
+    </body>
+</html>
