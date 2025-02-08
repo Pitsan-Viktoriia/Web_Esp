@@ -70,6 +70,10 @@ class ProfileView(View):
 class UserInfoView(View):
 
     def get(self, request):
-        return JsonResponse({'username': f'{request.user.username}',
-                             'date_joined': str(CustomUser.objects.get(username=request.user.username).date_joined).split()[0]})
-    
+        try:
+            username = request.user.username
+            date_joined = str(CustomUser.objects.get(username=request.user.username).date_joined).split()[0]
+            return JsonResponse({'username': f'{request.user.username}',
+                                'date_joined': date_joined})
+        except:
+            return JsonResponse({'message': 'user not found'})

@@ -6,9 +6,11 @@ document.addEventListener('DOMContentLoaded', function() {
             throw new Error('request failed');
         }
     }).then(data => {
-        var username = data['username']
-        if (username != '')     // if user logged in
+        var username = data['username'];
+        var message = data['message'];
+        if (message != 'user not found')     // if user logged in
         {
+            console.log(data);
             document.getElementById('nav__login').style.display = 'none';
             document.getElementById('nav__register').style.display = 'none';
         }
