@@ -132,3 +132,12 @@ class ExerciseInfoView(View):
                                 'content': requested_exercise.json})
         except Exercise.DoesNotExist:
             return JsonResponse({'message': f'exercise with id = {pk} not found'})
+        
+
+class ExercisesByTopicIdView(View):
+    def get(self, request, pk):
+        requested_topic = Topic.objects.get(pk=pk)
+        id_list = []
+        for exercise in requested_topic.topicOfExercise.all():
+            id_list.append(exercise.id)
+        return JsonResponse({'id_list': id_list})
