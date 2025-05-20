@@ -1,0 +1,32 @@
+.main_class {
+    height: calc(100vh - 10vh - 10vh);
+    display: block;
+    padding: 5vh;
+}
+
+h3 {
+    color: #B36A5E;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+section ul li {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 8px;
+}
+
+a {
+    color: #B36A5E;
+    font-size: 14pt;
+}
+
+section {
+    background-color: #EEE2DF;
+    padding: 30px;
+    margin: 30px;
+    border-radius: 8px;
+}

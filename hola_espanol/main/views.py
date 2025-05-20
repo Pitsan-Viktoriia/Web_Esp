@@ -85,3 +85,10 @@ class LearningView(View):
         template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'learning_ua.html'))
         with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
+        
+class LexiconView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'lexicon_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return HttpResponse(f.read())
