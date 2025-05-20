@@ -93,6 +93,13 @@ class LexiconView(View):
         with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
         
+class GrammarView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'grammar_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return HttpResponse(f.read())
+        
 
 class TopicInfoView(View):
 

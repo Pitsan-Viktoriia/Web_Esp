@@ -13,6 +13,7 @@ urlpatterns = [
     path('home/', HomePageView.as_view()),
     path('learning/', LearningView.as_view()),
     path('learning/lexicon/', LexiconView.as_view()),
+    path('learning/grammar/', GrammarView.as_view()),
     path('info/topic/<int:pk>', TopicInfoView.as_view()),
     path('info/topic/all', AllTopicsIdView.as_view()),
 ]
