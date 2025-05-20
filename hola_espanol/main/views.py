@@ -77,3 +77,11 @@ class UserInfoView(View):
                                 'date_joined': date_joined})
         except:
             return JsonResponse({'message': 'user not found'})
+        
+
+class LearningView(View):
+
+    def get(self, request):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'learning_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return HttpResponse(f.read())

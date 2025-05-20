@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15vh;
+    width: 100%;
+    padding: 0 20px;
+}
+.container_box {
+    flex: 0 0 25%;
+    padding: 50px;
+    text-align: center;
+    background-color: #EEE2DF;
+    border-radius: 8px;
+    height: 52vh;
+    display: flex;
+    flex-direction: column;
+}
+.content {
+    margin-top: 20px;
+}
+
+h1 {
+    font-weight: bold;
+    color: #B36A5E;
+    margin-bottom: 20px;
+}
+.button_progress_container {
+    margin-top: auto;
+    margin-bottom: 20px;
+}
+
+.logout_button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #C97C5D;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin: 20px;
+}
+
+.amount_completed {
+    margin-top: 20px;
+    font-size: 14pt;
+}
