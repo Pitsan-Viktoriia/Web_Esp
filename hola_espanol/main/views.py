@@ -6,7 +6,7 @@ from django.views import View
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
-from .models import CustomUser
+from .models import CustomUser, Topic
 from .utils import get_html_message
 
 class RegisterView(View):
@@ -92,3 +92,15 @@ class LexiconView(View):
         template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'lexicon_ua.html'))
         with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
+        
+
+class TopicInfoView(View):
+
+    def get(self, request, pk):
+        try:
+            requested_topic = Topic.objects.get(pk=pk)
+            return JsonResponse({'id': pk,
+                                'type': requested_topic.type,
+                                'name': requested_topic.name})
+        except Topic.DoesNotExist:
+            return JsonResponse({'message': f'topic with id = {pk} not found'})
