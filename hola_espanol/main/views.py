@@ -104,3 +104,12 @@ class TopicInfoView(View):
                                 'name': requested_topic.name})
         except Topic.DoesNotExist:
             return JsonResponse({'message': f'topic with id = {pk} not found'})
+        
+
+class AllTopicsIdView(View):
+
+    def get(self, request):
+        id_list = []
+        for topic_record in Topic.objects.all().iterator():
+            id_list.append(topic_record.id)
+        return JsonResponse({'id_list': id_list})
