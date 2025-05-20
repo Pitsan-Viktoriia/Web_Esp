@@ -6,7 +6,7 @@ from django.views import View
 from django.db.utils import IntegrityError
 from django.contrib.auth import authenticate, login, logout
 
-from .models import CustomUser, Topic
+from .models import CustomUser, Topic, Exercise
 from .utils import get_html_message
 
 class RegisterView(View):
@@ -120,3 +120,15 @@ class AllTopicsIdView(View):
         for topic_record in Topic.objects.all().iterator():
             id_list.append(topic_record.id)
         return JsonResponse({'id_list': id_list})
+    
+
+class ExerciseInfoView(View):
+    def get(self, request, pk):
+        try:
+            requested_exercise = Exercise.objects.get(pk=pk)
+            return JsonResponse({'id': pk,
+                                'type': requested_exercise.type,
+                                'topic_id': requested_exercise.topic.id,
+                                'content': requested_exercise.json})
+        except Exercise.DoesNotExist:
+            return JsonResponse({'message': f'exercise with id = {pk} not found'})
