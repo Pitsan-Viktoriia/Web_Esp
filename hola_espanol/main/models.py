@@ -23,7 +23,7 @@ class Material(models.Model):
 
     id = models.BigAutoField(primary_key=True, editable=False)
     type = models.CharField(max_length=255)     # can be different types of materials
-    topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING)
+    topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING, related_name='topicOfMaterial')
     json = models.JSONField()   # all material needed content by type
 
 

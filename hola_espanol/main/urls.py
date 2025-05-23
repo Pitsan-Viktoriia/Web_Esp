@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
-from .views import RegisterView, LoginView, LogoutView, HomePageView, UserInfoView, ProfileView, LearningView, LexiconView, GrammarView, TopicInfoView, AllTopicsIdView, ExerciseInfoView, ExercisesByTopicIdView
+from .views import RegisterView, LoginView, LogoutView, HomePageView, UserInfoView, ProfileView, LearningView, LexiconView, GrammarView, TopicInfoView, AllTopicsIdView, ExerciseInfoView, ExercisesByTopicIdView, MaterialInfoView, MaterialsByTopicIdView
 
 urlpatterns = [
     path('accounts/register/', RegisterView.as_view()),
@@ -18,4 +18,6 @@ urlpatterns = [
     path('info/topic/all/', AllTopicsIdView.as_view()),
     path('info/topic/<int:pk>/exercises/', ExercisesByTopicIdView.as_view()),
     path('info/exercise/<int:pk>/', ExerciseInfoView.as_view()),
+    path('info/topic/<int:pk>/materials/', MaterialsByTopicIdView.as_view()),
+    path('info/material/<int:pk>/', MaterialInfoView.as_view()),
 ]
