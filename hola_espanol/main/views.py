@@ -162,3 +162,10 @@ class MaterialsByTopicIdView(View):
         for material in requested_topic.topicOfMaterial.all():
             id_list.append(material.id)
         return JsonResponse({'id_list': id_list})
+    
+
+class MaterialPageView(View):
+    def get(self, request, pk):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'material_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return HttpResponse(f.read())
