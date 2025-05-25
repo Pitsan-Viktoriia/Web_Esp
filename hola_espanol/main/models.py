@@ -18,6 +18,7 @@ class Exercise(models.Model):
     id = models.BigAutoField(primary_key=True, editable=False)
     type = models.CharField(max_length=255)     # can be different types of exercises
     topic = models.ForeignKey(Topic, on_delete=models.DO_NOTHING, related_name='topicOfExercise')
+    json = models.JSONField()
 
 class Material(models.Model):
 
