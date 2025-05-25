@@ -169,3 +169,10 @@ class MaterialPageView(View):
         template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'material_ua.html'))
         with open(template_path, 'r', encoding='utf-8') as f:
             return HttpResponse(f.read())
+        
+
+class ExercisePageView(View):
+    def get(self, request, pk):
+        template_path = os.path.abspath(os.path.join(os.path.abspath(__file__), '..', 'templates', 'exercise_ua.html'))
+        with open(template_path, 'r', encoding='utf-8') as f:
+            return HttpResponse(f.read())
