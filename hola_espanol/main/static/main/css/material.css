@@ -1,0 +1,5 @@
+.main_class {
+    height: calc(100vh - 10vh);
+    padding: 40px;
+    display: block;
+}
