@@ -275,6 +275,10 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             fillgap(data)
         }
+        if (data['type'] == 'flashcard')
+        {
+            flashcard(data)
+        }
         // let html_content = data['content']['html_content']
         // document.getElementById('main_class').innerHTML = html_content
     })

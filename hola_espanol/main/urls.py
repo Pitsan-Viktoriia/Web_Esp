@@ -25,4 +25,6 @@ urlpatterns = [
     path('info/exercise/<int:pk>/', ExerciseInfoView.as_view()),
     path('info/topic/<int:pk>/materials/', MaterialsByTopicIdView.as_view()),
     path('info/material/<int:pk>/', MaterialInfoView.as_view()),
+
+    path('', HomePageView.as_view()),
 ]
