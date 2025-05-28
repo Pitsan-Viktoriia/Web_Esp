@@ -16,6 +16,8 @@ urlpatterns = [
     path('learning/grammar/', GrammarView.as_view()),
     path('learning/grammar/material/<int:pk>/', MaterialPageView.as_view()),
     path('learning/grammar/exercise/<int:pk>/', ExercisePageView.as_view()),
+    path('learning/lexicon/material/<int:pk>/', MaterialPageView.as_view()),
+    path('learning/lexicon/exercise/<int:pk>/', ExercisePageView.as_view()),
 
     path('info/topic/<int:pk>/', TopicInfoView.as_view()),
     path('info/topic/all/', AllTopicsIdView.as_view()),
