@@ -1,7 +1,62 @@
+let flashcard_counter = 0
+
 async function getJsonByURL(url) {
     const response = await fetch(url);
     const data = await response.json();
     return data;
+}
+
+function next_card(data) {
+    flashcard_counter = (flashcard_counter + 1) % data['content']['items'].length
+    document.getElementById('flashcard_front').textContent = data['content']['items'][flashcard_counter]['front']
+    document.getElementById('flashcard_back').textContent = data['content']['items'][flashcard_counter]['back']
+    document.getElementById('flashcard_div').classList.remove('flipped')
+}
+
+function flip_card() {
+    document.getElementById('flashcard_div').classList.toggle('flipped')
+}
+
+function flashcard(data) {
+    let link = document.createElement('link')
+    link.rel = 'stylesheet'
+    link.type = 'text/css'
+    link.href = '/static/main/css/flashcard.css'
+    document.getElementsByTagName('HEAD')[0].appendChild(link)
+    console.log(data['content'])
+    let flashcard_container = document.createElement('div')
+    flashcard_container.setAttribute('class', 'flashcard_container')
+    let flashcard_div = document.createElement('div')
+    flashcard_div.setAttribute('class', 'flashcard_div')
+    flashcard_div.setAttribute('id', 'flashcard_div')
+    let front_div = document.createElement('div')
+    front_div.setAttribute('class', 'flashcard_front')
+    front_div.setAttribute('id', 'flashcard_front')
+    front_div.innerHTML = data['content']['items'][0]['front']
+    let back_div = document.createElement('div')
+    back_div.setAttribute('class', 'flashcard_back')
+    back_div.setAttribute('id', 'flashcard_back')
+    back_div.innerHTML = data['content']['items'][0]['back']
+
+    let buttons_container = document.createElement('div')
+    buttons_container.setAttribute('class', 'buttons_container')
+    let button_flip = document.createElement('button')
+    button_flip.setAttribute('class', 'logout_button')
+    button_flip.innerHTML = 'Перегорнути'
+    button_flip.onclick = function() {flip_card()}
+    let button_next = document.createElement('button')
+    button_next.innerHTML = 'Наступна картка'
+    button_next.setAttribute('class', 'logout_button')
+    button_next.onclick = function() {next_card(data)}
+    buttons_container.appendChild(button_flip)
+    buttons_container.appendChild(button_next)
+
+    let main = document.getElementById('main_class')
+    flashcard_div.appendChild(front_div)
+    flashcard_div.appendChild(back_div)
+    flashcard_container.appendChild(flashcard_div)
+    main.appendChild(flashcard_container)
+    main.appendChild(buttons_container)
 }
 
 function check_checkbox_answers(data) {
