@@ -46,6 +46,27 @@ function check_dropdown_answers(data) {
     main.querySelector('div').appendChild(answers)
 }
 
+function check_fillgap_answers(data) {
+    let main = document.getElementById('main_class')
+    let answers = document.createElement('div')
+    answers.setAttribute('class', 'answers_checkbox_class')
+    for (let i = 0; i < data['content']['items'].length; i++)
+    {
+        console.log(document.querySelector('input[name="q' + i + '"]').getAttribute('for'))
+        let label = document.createElement('label')
+        if (document.querySelector('input[name="q' + i + '"]').value == document.querySelector('input[name="q' + i + '"]').getAttribute('for'))
+        {
+            label.innerHTML = 'Відповідь ' + i + ' правильна!'
+        }
+        else
+        {
+            label.innerHTML = 'Відповідь' + i + ' неправильна!'
+        }
+        answers.appendChild(label)
+    }
+    main.querySelector('div').appendChild(answers)
+}
+
 function checkbox(data) {
     let main = document.getElementById('main_class')
     let questions_grid = document.createElement('div')
@@ -144,6 +165,46 @@ function dropdown(data) {
     main.appendChild(questions_grid)
 }
 
+function fillgap(data) {
+    let main = document.getElementById('main_class')
+    let questions_grid = document.createElement('div')
+    questions_grid.setAttribute('class', 'questions_grid')
+    for (let i = 0; i < data['content']['items'].length; i++) {
+        console.log(data['content']['items'][i])
+
+        let question_container = document.createElement('div')
+        question_container.setAttribute('class', 'question_container')
+
+        // question_container filling
+        let p = document.createElement('p')
+
+        let text = data['content']['items'][i]['text']
+        let final_text = ""
+        let prev_text_position = 0
+        // fill text with gaps
+        for (let j = 0; j < data['content']['items'][i]['gaps'].length; j++)
+        {
+            let input = document.createElement('input')
+            input.setAttribute('name', 'q' + i)
+            input.setAttribute('for', data['content']['items'][i]['gaps'][j]['correct_answer'])
+            final_text = final_text + text.slice(prev_text_position, data['content']['items'][i]['gaps'][j]['text_position_index']) + ' ' + input.outerHTML + ' '
+            prev_text_position = data['content']['items'][i]['gaps'][j]['text_position_index']
+        }
+        final_text = final_text + text.slice(prev_text_position, text.length)
+        let label = document.createElement('label')
+        label.innerHTML = final_text
+        // console.log(final_text)
+        question_container.appendChild(label)
+        questions_grid.appendChild(question_container)
+    }
+    let submit_button = document.createElement('button')
+    submit_button.setAttribute('class', 'logout_button')
+    submit_button.innerHTML = 'Перевірити відповіді'
+    submit_button.onclick = function() {check_fillgap_answers(data)}
+    questions_grid.appendChild(submit_button)
+    main.appendChild(questions_grid)
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     let current_url = window.location.href
     let exercise_id = current_url.split('/')[current_url.split('/').length - 2]
@@ -154,6 +215,10 @@ document.addEventListener('DOMContentLoaded', function() {
         if (data['type'] == 'dropdown')
         {
             dropdown(data)
+        }
+        if (data['type'] == 'fillgap')
+        {
+            fillgap(data)
         }
         // let html_content = data['content']['html_content']
         // document.getElementById('main_class').innerHTML = html_content
