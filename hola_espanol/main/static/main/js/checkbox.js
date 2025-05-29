@@ -162,7 +162,7 @@ function checkbox(data) {
     let submit_button = document.createElement('button')
     submit_button.setAttribute('class', 'logout_button')
     submit_button.innerHTML = 'Перевірити відповіді'
-    submit_button.onclick = function() {check_answers(data)}
+    submit_button.onclick = function() {check_checkbox_answers(data)}
     questions_grid.appendChild(submit_button)
     main.appendChild(questions_grid)
 }
