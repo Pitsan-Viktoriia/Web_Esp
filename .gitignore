@@ -12,7 +12,7 @@ __pycache__
 *.bak
 
 # database files
-*.db
-*.database
-*.sqlite
-*.sqlite3
+# *.db
+# *.database
+# *.sqlite
+# *.sqlite3
