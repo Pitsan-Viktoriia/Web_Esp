@@ -10,7 +10,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         {
             await getJsonByURL('/info/topic/' + data['id_list'][i] + '/').then(async data => {
                 if (data['type'] == 'lexicon') {
-                    console.log(data)
                     // form section by creating elements
                     let section = document.createElement('section')
                     let topic_name = document.createElement('h1')

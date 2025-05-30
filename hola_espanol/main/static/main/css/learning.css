@@ -41,6 +41,10 @@ h1 {
     margin: 20px;
 }
 
+.logout_button:disabled {
+    background-color: gray;
+}
+
 .amount_completed {
     margin-top: 20px;
     font-size: 14pt;
