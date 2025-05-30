@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }).then(data => {
         document.getElementById('profile_header').innerHTML = `Hola, ${data['username']}!`;
-        document.getElementById('profile_username').innerHTML = `Юзернейм: ${data['username']}`;
+        document.getElementById('profile_username').innerHTML = `Логін: ${data['username']}`;
         document.getElementById('profile_date').innerHTML = `Дата реєстрації: ${data['date_joined']}`;
     }).catch(error => {
         console.error(error);
