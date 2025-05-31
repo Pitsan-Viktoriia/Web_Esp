@@ -414,21 +414,25 @@ function dropdown(data) {
 
 function fillgap(data) {
   const main = document.getElementById('main_class');
-  console.log({main, data})
+  console.log({ main, data });
   displayInstructions(main, data.content?.instructions);
+
   data.content.items.forEach((item, i) => {
     const qc = document.createElement('div');
-    qc.className = 'question_container dialog_item'; // Added 'dialog_item' for styling
+    qc.className = 'question_container dialog_item';
     qc.id = `qc_fillgap_${i}`;
 
     // Line A
     const lineA = document.createElement('div');
     lineA.className = 'dialog_line_a';
 
-    const speakerA = document.createElement('span');
-    speakerA.className = 'speaker_label';
-    speakerA.textContent = 'A: ';
-    lineA.appendChild(speakerA);
+    // Only add "A: " if there's a B reply defined
+    if (item.b_reply && item.b_reply.trim() !== '') {
+      const speakerA = document.createElement('span');
+      speakerA.className = 'speaker_label';
+      speakerA.textContent = 'A: ';
+      lineA.appendChild(speakerA);
+    }
 
     if (item.a_prefix && item.a_prefix.trim() !== '') {
       const prefixSpan = document.createElement('span');
@@ -438,11 +442,11 @@ function fillgap(data) {
     }
 
     const inp = document.createElement('input');
-    inp.type = 'text'; // Explicitly set type
+    inp.type = 'text';
     inp.name = `q${i}`;
-    inp.id   = `q${i}_input`; // Unique ID for the input field
+    inp.id = `q${i}_input`;
     inp.setAttribute('data-correct', item.correct_answer);
-    inp.className = 'answer_input dialog_input'; // Added 'dialog_input' for styling
+    inp.className = 'answer_input dialog_input';
     lineA.appendChild(inp);
 
     if (item.a_postfix && item.a_postfix.trim() !== '') {
@@ -455,25 +459,30 @@ function fillgap(data) {
     if (item.a_hint && item.a_hint.trim() !== '') {
       const hintSpan = document.createElement('span');
       hintSpan.className = 'translation_hint';
-      hintSpan.textContent = ` ${item.a_hint}`; // Add leading space for separation
+      hintSpan.textContent = ` ${item.a_hint}`;
       lineA.appendChild(hintSpan);
     }
 
-    // Line B
-    const lineB = document.createElement('div');
-    lineB.className = 'dialog_line_b';
+    qc.appendChild(lineA);
 
-    const speakerB = document.createElement('span');
-    speakerB.className = 'speaker_label';
-    speakerB.textContent = 'B: ';
-    lineB.appendChild(speakerB);
+    // Only create Line B if b_reply is defined and non-empty
+    if (item.b_reply && item.b_reply.trim() !== '') {
+      const lineB = document.createElement('div');
+      lineB.className = 'dialog_line_b';
 
-    const replySpan = document.createElement('span');
-    replySpan.className = 'reply_text';
-    replySpan.textContent = item.b_reply;
-    lineB.appendChild(replySpan);
+      const speakerB = document.createElement('span');
+      speakerB.className = 'speaker_label';
+      speakerB.textContent = 'B: ';
+      lineB.appendChild(speakerB);
 
-    qc.append(lineA, lineB);
+      const replySpan = document.createElement('span');
+      replySpan.className = 'reply_text';
+      replySpan.textContent = item.b_reply;
+      lineB.appendChild(replySpan);
+
+      qc.appendChild(lineB);
+    }
+
     main.appendChild(qc);
   });
 
@@ -481,9 +490,15 @@ function fillgap(data) {
     main,
     () => showResults('fillgap', data, controls),
     () => resetHandler('fillgap', data, controls),
-    () => retryHandler('fillgap', data, controls) // Pass controls
+    () => retryHandler('fillgap', data, controls)
   );
-  enableButtonsState('fillgap', data.content.items, controls.btnCheck, controls.btnReset, controls.btnRetry);
+  enableButtonsState(
+    'fillgap',
+    data.content.items,
+    controls.btnCheck,
+    controls.btnReset,
+    controls.btnRetry
+  );
 }
 
 // ————— Entry point —————
