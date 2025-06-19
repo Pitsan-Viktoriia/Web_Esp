@@ -1,3 +1,8 @@
+#Автори
+
+Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.
+This project was developed by Viktoriia Pitsan and Yana Hranovska.
+
 # Django Project Setup
 
 This README will guide you through setting up a Django project in any development environment, including creating and activating a Python virtual environment, installing Django (or other dependencies), running your Django application, and optionally configuring an IDE or editor.
