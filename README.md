@@ -1,6 +1,5 @@
-Автори
-
-Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.
+**Автори**  
+Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.  
 This project was developed by Viktoriia Pitsan and Yana Hranovska.
 
 # Django Project Setup
