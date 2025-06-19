@@ -1,4 +1,4 @@
-# **Автори**  
+# **Developers**  
 
 Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.  
 This project was developed by Viktoriia Pitsan and Yana Hranovska.
