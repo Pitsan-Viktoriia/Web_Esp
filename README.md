@@ -1,7 +1,7 @@
 # **Developers**  
 
-Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.  
 This project was developed by Viktoriia Pitsan and Yana Hranovska.
+Над цим проєктом працювали: Піцан Вікторія та Грановська Яна.  
 
 ## Django Project Setup
 
